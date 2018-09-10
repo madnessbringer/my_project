@@ -40,6 +40,9 @@ class WindowsPaths {
     /**Field for create_windows.bat path*/
     final String WINDOWS_CREATE_PATH = "bats\\create_windows.bat";
 
+    /**Field for create_windows_xp.bat path*/
+    final String WINDOWS_XP_CREATE_PATH = "bats\\create_windows_xp.bat";
+
     /**Field for delete_windows.bat path*/
     final String WINDOWS_DELETE_PATH = "bats\\delete_windows.bat";
 
