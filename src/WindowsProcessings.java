@@ -31,9 +31,9 @@ public class WindowsProcessings {
         double tmp = (Double.parseDouble(tmpResult)) / (1024 * 1024);
         String capacity;
         if (tmp < 1024) {
-            capacity = "Объем: " + Double.toString(tmp) + "Мб";
+            capacity = "Объем: " + String.format("%.1f", tmp) + "Мб";
         } else
-            capacity = "Объем: " + Double.toString(tmp / 1024) + "Гб";
+            capacity = "Объем: " + String.format("%.1f", tmp / 1024) + "Гб";
         tmpResult = stringTrim(tmpString);
         tmpString = tmpString.substring(tmpResult.length() + 1).trim();
         String manufacture = "Производитель: " + tmpResult;
@@ -54,9 +54,9 @@ public class WindowsProcessings {
         String capacity = string.trim();
         double tmp = (Double.parseDouble(capacity)) / 1024;
         if (tmp < 1024) {
-            capacity = "Объем: " + Double.toString(tmp) + "Мб";
+            capacity = "Объем: " + String.format("%.1f", tmp) + "Мб";
         } else
-            capacity = "Объем: " + Double.toString(tmp / 1024) + "Гб";
+            capacity = "Объем: " + String.format("%.1f", tmp / 1024) + "Гб";
         return capacity;
     }
 

@@ -60,7 +60,7 @@ public class WindowsExecs {
         processings.notebookModelGet();
         processings.motherboardGet();
         processings.cpuGet();
-        processings.ramGet();
+        processings.ramGetXP();
         processings.videocardGet();
         processings.harddiskGet();
         processings.networkAdapterGet();

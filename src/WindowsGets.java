@@ -251,6 +251,43 @@ class WindowsGets {
 
 
     /**
+     * Method defines RAM info in XP and put it in SYSINFO.txt
+     * in form of Capacity only
+     * @exception IOException
+     * */
+    void ramGetXP() {
+        StringBuilder result = new StringBuilder();
+        String line;
+        try(BufferedReader reader =
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    new FileInputStream(paths.RAM_INFO_PATH), "Unicode"));
+            BufferedWriter writer =
+                    new BufferedWriter(
+                            new OutputStreamWriter(
+                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+            line = reader.readLine();
+            line = reader.readLine();
+            while (line != null){
+                if (line.length() > 1){
+                    line = processings.ramProcessingXP(line);
+                    result.append(line);
+                    result.append(lineSeparator);
+                }
+                line = reader.readLine();
+            }
+            writer.write("Оперативная память:");
+            writer.write(lineSeparator);
+            writer.write(result.toString());
+            writer.write(lineSeparator);
+            writer.write(lineSeparator);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
      * Method defining video card model and put result in SYSINFO.txt
      * @exception IOException*/
     void videocardGet() {
