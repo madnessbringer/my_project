@@ -20,6 +20,26 @@ class WindowsGets {
     /**WindowsProcessing class object to use it's methods*/
     private WindowsProcessings processings = new WindowsProcessings();
 
+
+    /**
+     * Method for getting first title string for SYSINFO.txt and replacing file if it exist
+     * */
+    void statusGet(){
+        try (BufferedWriter writer =
+                     new BufferedWriter(
+                             new OutputStreamWriter(
+                                     new FileOutputStream(paths.RESULT_FILE_PATH, false), "Unicode"))){
+            String status = "Sysinfo: Информация о системе.";
+            writer.write(status);
+            writer.write(lineSeparator);
+            writer.write(lineSeparator);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * Method for getting information about OS and put it in SYSINFO.txt.
      * in form of "System version(xp, vista, 7, 8, 10) - distributive version - system type (x64 or x32)

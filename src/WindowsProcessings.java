@@ -1,3 +1,4 @@
+
 /**
  * Class WindowsProcessings
  * Contains methods that processing strings read with WindowsGets methods.
@@ -5,6 +6,7 @@
  */
 
 public class WindowsProcessings {
+
     /**
      * Method for cut first word from string (divide words with space characters)
      * @param string - String, from which we need to get first word
