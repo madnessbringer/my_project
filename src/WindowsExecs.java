@@ -8,12 +8,10 @@ import java.io.IOException;
 
 
 public class WindowsExecs {
-    /**WindowsPaths class object to use paths*/
-    private WindowsPaths paths = new WindowsPaths();
 
 
-    /**WindowsGets class object to use it's methods*/
-    private WindowsGets processings = new WindowsGets();
+    /**WindowsReceives class object to use it's methods*/
+    private WindowsReceives receives = new WindowsReceives();
 
 
     /**
@@ -22,7 +20,7 @@ public class WindowsExecs {
      * @throws InterruptedException
      * */
     private void startingExecWin() throws IOException, InterruptedException {
-        ProcessBuilder startingProcBuilder = new ProcessBuilder(paths.WINDOWS_CREATE_PATH);
+        ProcessBuilder startingProcBuilder = new ProcessBuilder(WindowsPaths.WINDOWS_CREATE_PATH);
         startingProcBuilder.redirectErrorStream( true );
         Process process = startingProcBuilder.start();
         process.waitFor();
@@ -34,7 +32,7 @@ public class WindowsExecs {
      * @throws InterruptedException
      * */
     private void startingExecWinXP() throws IOException, InterruptedException {
-        ProcessBuilder startingProcBuilder = new ProcessBuilder(paths.WINDOWS_XP_CREATE_PATH);
+        ProcessBuilder startingProcBuilder = new ProcessBuilder(WindowsPaths.WINDOWS_XP_CREATE_PATH);
         startingProcBuilder.redirectErrorStream( true );
         Process process = startingProcBuilder.start();
         process.waitFor();
@@ -46,7 +44,7 @@ public class WindowsExecs {
      * @throws IOException
      * @throws  InterruptedException*/
     private void quitExec() throws IOException, InterruptedException {
-        ProcessBuilder startingProcBuilder = new ProcessBuilder(paths.WINDOWS_DELETE_PATH);
+        ProcessBuilder startingProcBuilder = new ProcessBuilder(WindowsPaths.WINDOWS_DELETE_PATH);
         startingProcBuilder.redirectErrorStream( true );
         Process process = startingProcBuilder.start();
         process.waitFor();
@@ -55,16 +53,16 @@ public class WindowsExecs {
     /**Method that launch sequence for Windows XP*/
     void winXPExec() throws IOException, InterruptedException {
         startingExecWinXP();
-        processings.statusGet();
-        processings.osGet();
-        processings.notebookModelGet();
-        processings.motherboardGet();
-        processings.cpuGet();
-        processings.ramGetXP();
-        processings.videocardGet();
-        processings.harddiskGet();
-        processings.networkAdapterGet();
-        processings.printerGet();
+        receives.statusGet();
+        receives.osGet();
+        receives.notebookModelGet();
+        receives.motherboardGet();
+        receives.cpuGet();
+        receives.ramGetXP();
+        receives.videocardGet();
+        receives.harddiskGet();
+        receives.networkAdapterGet();
+        receives.printerGet();
         quitExec();
     }
 
@@ -72,16 +70,16 @@ public class WindowsExecs {
     /**Method that launch sequence for Windows newer than XP*/
     void winOtherExec() throws IOException, InterruptedException {
         startingExecWin();
-        processings.statusGet();
-        processings.osGet();
-        processings.notebookModelGet();
-        processings.motherboardGet();
-        processings.cpuGet();
-        processings.ramGet();
-        processings.videocardGet();
-        processings.harddiskGet();
-        processings.networkAdapterGet();
-        processings.printerGet();
+        receives.statusGet();
+        receives.osGet();
+        receives.notebookModelGet();
+        receives.motherboardGet();
+        receives.cpuGet();
+        receives.ramGet();
+        receives.videocardGet();
+        receives.harddiskGet();
+        receives.networkAdapterGet();
+        receives.printerGet();
         quitExec();
     }
 }

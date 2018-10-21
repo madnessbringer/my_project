@@ -1,7 +1,7 @@
 
 /**
  * Class WindowsProcessings
- * Contains methods that processing strings read with WindowsGets methods.
+ * Contains methods that processing strings read with WindowsReceives methods.
  * @author Ushakov Ilya Vladimirovich
  */
 

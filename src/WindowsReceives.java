@@ -1,5 +1,5 @@
 /**
- * Class WindowsGets
+ * Class WindowsReceives
  * Contains methods that read logfiles and than write result in result file.
  * @author Ushakov Ilya Vladimirovich
  */
@@ -9,13 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class WindowsGets {
+class WindowsReceives {
 
     /**Field that contains line separator*/
     private String lineSeparator = System.getProperty("line.separator");
-
-    /**WindowsPaths class object to use paths*/
-    private WindowsPaths paths = new WindowsPaths();
 
     /**WindowsProcessing class object to use it's methods*/
     private WindowsProcessings processings = new WindowsProcessings();
@@ -28,7 +25,7 @@ class WindowsGets {
         try (BufferedWriter writer =
                      new BufferedWriter(
                              new OutputStreamWriter(
-                                     new FileOutputStream(paths.RESULT_FILE_PATH, false), "Unicode"))){
+                                     new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, false), "Unicode"))){
             String status = "Sysinfo: Информация о системе.";
             writer.write(status);
             writer.write(lineSeparator);
@@ -48,11 +45,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.OS_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.OS_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             String line = reader.readLine();
             int count = 0;
             String os = "";
@@ -92,11 +89,11 @@ class WindowsGets {
     /**
      * Method for checking OS type (x32 or x64) via existence of "program files (x86)" folder
      * @return type of the OS as String "x64" or "x86"
-     * @see WindowsGets#osGet()
+     * @see WindowsReceives#osGet()
      * */
     private String osTypeGet(){
         String result;
-        Path check = Paths.get(paths.PROGRAM_FILES_PATH);
+        Path check = Paths.get(WindowsPaths.PROGRAM_FILES_PATH);
         if (Files.exists(check)){
             result = "x64";
         }
@@ -113,11 +110,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.NOTEBOOK_MODEL_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.NOTEBOOK_MODEL_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             String line = reader.readLine();
             int count = 0;
             while (line != null){
@@ -151,11 +148,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.MOTHERBOARD_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.MOTHERBOARD_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             String line = reader.readLine();
             int count = 0;
             while (line != null){
@@ -186,11 +183,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.CPU_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.CPU_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             String line = reader.readLine();
             int count = 0;
             while (line != null){
@@ -224,11 +221,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.RAM_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.RAM_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             line = reader.readLine();
             line = reader.readLine();
             while (line != null){
@@ -261,11 +258,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.RAM_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.RAM_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             line = reader.readLine();
             line = reader.readLine();
             while (line != null){
@@ -296,11 +293,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.VIDEO_CARD_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.VIDEO_CARD_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             line = reader.readLine();
             line = reader.readLine();
             while (line != null){
@@ -331,11 +328,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.HARD_DISK_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.HARD_DISK_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             line = reader.readLine();
             line = reader.readLine();
             while (line != null){
@@ -368,11 +365,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.NETWORK_ADAPTER_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.NETWORK_ADAPTER_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))){
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))){
             line = reader.readLine();
             while (line != null){
                 if (line.length() > 1){
@@ -405,11 +402,11 @@ class WindowsGets {
         try(BufferedReader reader =
                     new BufferedReader(
                             new InputStreamReader(
-                                    new FileInputStream(paths.PRINTER_INFO_PATH), "Unicode"));
+                                    new FileInputStream(WindowsPaths.PRINTER_INFO_PATH), "Unicode"));
             BufferedWriter writer =
                     new BufferedWriter(
                             new OutputStreamWriter(
-                                    new FileOutputStream(paths.RESULT_FILE_PATH, true), "Unicode"))) {
+                                    new FileOutputStream(WindowsPaths.RESULT_FILE_PATH, true), "Unicode"))) {
             line = reader.readLine();
             line = reader.readLine();
             while (line != null){
